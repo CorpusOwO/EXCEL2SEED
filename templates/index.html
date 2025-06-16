@@ -6,21 +6,23 @@
     <title>CSV to SEED</title>
     <link rel="stylesheet" href="{{url_for('static',filename='dist/output.css')}}">
 </head>
-<body class="bg-[#f5f5fa]">
+<body class="bg-[#f5f5fa] overflow-hidden">
 
     <!-- navbard -->
-    <nav class="bg-white shadow-2xs w-full mb-8">
+    <header class="relative bg-white shadow-2xs w-full z-50">
         <div class="relative flex h-16 items-center px-32">
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <h1 class="text-3xl font-bold text-white"> <span class="text-[#10493f]"> EXCEL </span> <span class="text-gray-700"> TO </span>  <span class="text-[#F05340]"> SEED </span> </h1>
             </div>
         </div>
-    </nav>
+    </header>
     <!-- //navbard -->
 
+<div class="flex w-full">
+
 <!-- dropzone -->
-<div class="max-w-2xl mx-auto">
-	<div class="flex items-center justify-center w-full">
+<main class="max-w-2xl mx-auto w-1/3 flex-shrink-0 mt-8">
+	<div class="flex items-center justify-center w-full ">
         <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 rounded-lg cursor-pointer bg-white shadow-sm">
             <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -31,12 +33,26 @@
                     <p class="text-xs text-gray-500 dark:text-gray-400">(MAX. 15mb)</p>
                 </div>
                 <input id="dropzone-file" name="file" type="file" class="hidden" accept=".xls, .xlsx, .csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, text/csv" onchange="validateFile()" />
-                <button type="submit"> CONVERT </button>
             </form>
         </label>
     </div> 
-</div>
+</main>
 <!-- //dropzone -->
+
+<!-- right component -->
+<div class="hidden bg-white w-1/5 h-[94vh] flex flex-col justify-between py-2 border-l border-gray-300" id="convertContainer">
+  <div class="border-b border-gray-300 p-3 text-center">
+    <p class="text-3xl font-semibold font-mono">Excel to seeder!</p>
+  </div>
+  <div class="flex justify-center mb-10">
+    <button type="submit" class="bg-[#10493f] px-24 font-semibold py-6 text-white rounded-lg cursor-pointer text-xl text-bold shadow-lg hover:bg-[#155f52]">CONVERT TO SEED </button>
+  </div>
+</div>
+
+
+
+<!-- //right component -->
+</div>
 
 <!-- Modal error-->
 
